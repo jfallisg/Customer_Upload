@@ -1,6 +1,26 @@
 {% extends "layout.html" %}
 {% block content %}
     <div class="content-section">
-        <h1>Customer Upload Portal</h1>
+        <p>Upload New and Updated Subscriptions records here.</p>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" />
+            <input type="submit" value="Upload"/>
+        </form>
+        <br />
+        <p>Please limit file size to 3MB</p>
+        <p>Expecting *.tsv file in the format: </p>
+        <ol>
+            <li>Customer id (an integer)</li>
+            <li>Customer first name</li>
+            <li>Customer last name</li>
+            <li>Customer street address (assume US addresses only)</li>
+            <li>Customer state (assume US addresses only)</li>
+            <li>Customer zip code (assume US addresses only)</li>
+            <li>Change in purchase status - this will be either 'new' or 'canceled'</li>
+            <li>Product id for purchase (an integer)</li>
+            <li>Product name (a string, not longer than 100 characters)</li>
+            <li>Product purchase amount (in US dollars)</li>
+            <li>Date and time in ISO8601 format, i.e. 2007-04-05T14:30Z</li>
+        </ol>
     </div>
 {% endblock content %}

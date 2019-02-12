@@ -34,16 +34,14 @@ mysql> GRANT ALL PRIVILEGES ON *.* TO '<username>'@'localhost' WITH GRANT OPTION
 quit
 ```
 
-#### Create the database for the webapp
+#### Create the database and tables for the webapp
 ```bash
 mysql -u<username> -p
 mysql> CREATE DATABASE customers;
 quit
 
-python3
-python> from customerupload import db
-python> db.create_all()
-quit()
+# you need to be in the root project directory
+mysql -u<username> customers < db_install.sql
 ```
 
 #### Modify local environment config
