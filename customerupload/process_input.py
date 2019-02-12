@@ -88,8 +88,9 @@ class ProcessInput:
                                                          user_id=row['user_id'],
                                                          product_id=row['product_id'])
             user_subscription = pd.DataFrame(user_subscription_result)
-            if len(user_subscription == 0):
-                print("ERROR: Non existant subscription attempted to be cancelled: {}".format(
+
+            if len(user_subscription) == 0:
+                print("ERROR: Non existant subscription attempted to be cancelled: {}, {}".format(user_subscription,
                     row.to_string()), file=sys.stderr)
             else:
                 sql_delete_user_subscription = """
@@ -139,7 +140,6 @@ class ProcessInput:
         tsv = pd.read_csv(self._tsv_path, sep='\t',
                                 names=["user_id", "first_name", "last_name", "street_address", "state_code", "zip_code", "purchase_status", "product_id", "product_name", "purchase_amount", "dt_ISO8601"])
         tsv['datetime'] = tsv['dt_ISO8601'].apply(lambda ts: dateutil.parser.parse(ts))
-        tsv = tsv.sort_values(tsv['datetime'], ascending=True)
 
         input_rows = len(tsv.index)
         processed_rows = 0
