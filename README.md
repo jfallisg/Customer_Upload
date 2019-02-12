@@ -18,7 +18,7 @@ This procedure assumes you have the following already installed on your machine:
 ### Install Python dependencies
 
 ```bash
-// from the root project directory
+# from the root project directory
 virtualenv -p python3 venv
 source venv/bin/activate
 pip install -r requirements.txt
