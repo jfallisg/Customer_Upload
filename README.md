@@ -2,8 +2,15 @@
 
 ## Overview
   - A web app allowing `.tsv` file upload via form submission of new/updated customer subscriber data, ingested in to a MySQL database for analysis and reporting.
-  - Built in Flask
+  - Built with Python, Flask, MySQL
   - Boilerplate based on CoreyMSchafer's Flask tutorials: https://github.com/CoreyMSchafer/code_snippets/tree/master/Python/Flask_Blog
+
+## Screenshots
+![Main Page Screenshot](https://user-images.githubusercontent.com/1594436/52749524-6ca84b00-2fb7-11e9-95fa-6ceb2e2cfd16.png "Main Page Screenshot")
+![Completed Text Screenshot](https://user-images.githubusercontent.com/1594436/52749523-6ca84b00-2fb7-11e9-8df8-078c2ac97b26.png "Completed Text Screenshot")
+
+## Database Schema
+![Database Schema](https://user-images.githubusercontent.com/1594436/52749985-e260e680-2fb8-11e9-9d4c-d738de1fb802.png "Database Schema")
 
 ## Project Installation
 
@@ -34,12 +41,15 @@ mysql> GRANT ALL PRIVILEGES ON *.* TO '<username>'@'localhost' WITH GRANT OPTION
 quit
 ```
 
-#### Create the database and tables for the webapp
+#### Create the database
 ```bash
 mysql -u<username> -p
 mysql> CREATE DATABASE customers;
 quit
+```
 
+#### Create all the tables
+```
 # you need to be in the root project directory
 mysql -u<username> customers < db_install.sql
 ```
